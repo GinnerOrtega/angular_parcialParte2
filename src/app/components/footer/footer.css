@@ -1,0 +1,18 @@
+footer {
+  margin-top: 3rem;
+  background-color: #160a711c;
+}
+
+.footer-icon-btn {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+}
+
+.derechos {
+  background-color: var(--color-principal-oscuro);
+}

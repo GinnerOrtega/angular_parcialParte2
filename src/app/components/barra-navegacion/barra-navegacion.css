@@ -1,0 +1,24 @@
+.navbar {
+  background-color: var(--color-principal-oscuro);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  margin: 0 4px;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* En celulares se reduce el nombre para que quepa junto al botón del menú */
+@media (max-width: 400px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+}

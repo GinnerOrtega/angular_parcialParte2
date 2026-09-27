@@ -1,0 +1,47 @@
+/* Estilos globales de la aplicación */
+
+:root {
+  --color-principal: #2f6fb0;
+  --color-principal-oscuro: #245a91;
+  --color-fondo-suave: #f4f7fb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+/* Deja espacio para la barra de navegación fija al saltar a una sección */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+/* Se ajusta el color primario de Bootstrap al color del sitio */
+.btn-primary {
+  --bs-btn-bg: var(--color-principal);
+  --bs-btn-border-color: var(--color-principal);
+  --bs-btn-hover-bg: var(--color-principal-oscuro);
+  --bs-btn-hover-border-color: var(--color-principal-oscuro);
+  --bs-btn-active-bg: var(--color-principal-oscuro);
+  --bs-btn-active-border-color: var(--color-principal-oscuro);
+}
+
+.titulo-seccion {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-seccion::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.6rem auto 0;
+  background-color: var(--color-principal);
+  border-radius: 2px;
+}

@@ -1,0 +1,62 @@
+<section class="container-fluid mt-5 pt-2" id="medicos">
+  <h2 class="titulo-seccion">Nuestros médicos y especialidades</h2>
+  <p class="text-center text-muted mb-4">Selecciona una especialidad para conocer en qué consiste.</p>
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Barra lateral de especialidades -->
+      <div class="col-12 col-md-4 col-lg-3 mb-4">
+        <div class="barra-lateral">
+          <h5 class="mb-3"><i class="fas fa-stethoscope me-2"></i>Especialidades</h5>
+          <div class="list-group shadow-sm">
+            @for (especialidad of especialidades; track especialidad.clave) {
+              <button type="button" class="list-group-item list-group-item-action especialidad-link"
+                [class.active]="esSeleccionada(especialidad)" (click)="mostrarDescripcion(especialidad)">
+                <i [class]="especialidad.icono + ' icono-especialidad'"></i>
+                {{ especialidad.nombre }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de médicos -->
+      <div class="col-12 col-md-8 col-lg-9">
+
+        @if (especialidadSeleccionada(); as especialidad) {
+          <div class="alert alert-info alert-dismissible d-flex align-items-start" role="alert">
+            <i class="fas fa-circle-info fs-4 me-3 mt-1"></i>
+            <div>
+              <h6 class="alert-heading fw-bold mb-1">{{ especialidad.nombre }}</h6>
+              <p class="mb-1">{{ especialidad.descripcion }}</p>
+              <small class="text-body-secondary">Médicos disponibles: {{ cantidadMedicos() }}</small>
+            </div>
+            <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarDescripcion()"></button>
+          </div>
+        }
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4">
+          @for (medico of medicos; track medico.nombre) {
+            <div class="col">
+              <div class="card h-100 shadow-sm" [class.destacado]="esDestacado(medico)">
+                <img [src]="medico.imagen" class="card-img-top img-fluid" [alt]="medico.nombre">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ medico.nombre }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <i [class]="obtenerIcono(medico.especialidad) + ' me-1 text-primary-custom'"></i>
+                    {{ medico.subtitulo }}
+                  </h6>
+                  <p class="card-text">{{ medico.descripcion }}</p>
+                  <a href="#registro" class="btn btn-primary mt-auto">
+                    <i class="fas fa-calendar-plus me-1"></i> Agendar Cita
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

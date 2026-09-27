@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark sticky-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-calendar-check me-2"></i>AGENDAMIENTO DE CITAS
+    </a>
+
+    <button class="navbar-toggler" type="button" aria-controls="navbarNav"
+      [attr.aria-expanded]="menuAbierto()" aria-label="Mostrar menú" (click)="alternarMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav" [class.show]="menuAbierto()">
+      <ul class="navbar-nav ms-auto">
+        @for (enlace of enlaces; track enlace.seccion) {
+          <li class="nav-item">
+            <a class="nav-link" [href]="'#' + enlace.seccion" (click)="cerrarMenu()">{{ enlace.texto }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

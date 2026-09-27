@@ -1,0 +1,63 @@
+/* ---------- Barra lateral ---------- */
+.especialidad-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icono-especialidad {
+  width: 20px;
+  text-align: center;
+  color: var(--color-principal);
+}
+
+.especialidad-link.active {
+  background-color: var(--color-principal);
+  border-color: var(--color-principal);
+}
+
+.especialidad-link.active .icono-especialidad {
+  color: white;
+}
+
+/* En tablet y escritorio la barra lateral acompaña al usuario al hacer scroll */
+@media (min-width: 768px) {
+  .barra-lateral {
+    position: sticky;
+    top: 80px;
+  }
+}
+
+/* ---------- Tarjetas de médicos ---------- */
+.card {
+  border: 1px solid #e3e8ef;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.card.destacado {
+  border: 2px solid var(--color-principal);
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+}
+
+.text-primary-custom {
+  color: var(--color-principal);
+}

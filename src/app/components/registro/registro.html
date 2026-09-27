@@ -1,0 +1,164 @@
+<section class="container-fluid mt-5 mb-5" id="registro">
+  <h2 class="titulo-seccion">Regístrate</h2>
+  <p class="lead text-center mb-4 px-2">
+    Regístrate mediante este formulario. El correo electrónico ingresado será el dato al que
+    enviaremos el enlace de confirmación del registro.
+  </p>
+
+  <div class="container">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <div class="card shadow-sm border-0 tarjeta-formulario">
+        <div class="card-body p-4">
+          <form #formularioRegistro (ngSubmit)="registrar()">
+            <div class="row g-3">
+
+              <!-- Tipo de Identificación -->
+              <div class="col-12 col-md-6">
+                <label for="identificacion" class="form-label">Tipo de Identificación:</label>
+                <select id="identificacion" name="tipoIdentificacion" class="form-select"
+                  [(ngModel)]="datos.tipoIdentificacion" (blur)="validarCampo('tipoIdentificacion')"
+                  [class.is-invalid]="!!errores().tipoIdentificacion" [class.is-valid]="errores().tipoIdentificacion === ''">
+                  <option value="" disabled>Seleccione un tipo de identificación</option>
+                  @for (tipo of tiposIdentificacion; track tipo.valor) {
+                    <option [value]="tipo.valor">{{ tipo.texto }}</option>
+                  }
+                </select>
+                @if (errores().tipoIdentificacion) {
+                  <div class="invalid-feedback d-block">{{ errores().tipoIdentificacion }}</div>
+                }
+              </div>
+
+              <!-- Número de Identificación -->
+              <div class="col-12 col-md-6">
+                <label for="numero-identificacion" class="form-label">Número de Identificación:</label>
+                <input type="text" id="numero-identificacion" name="numeroIdentificacion" class="form-control"
+                  placeholder="Número de identificación" [(ngModel)]="datos.numeroIdentificacion"
+                  (blur)="validarCampo('numeroIdentificacion')"
+                  [class.is-invalid]="!!errores().numeroIdentificacion" [class.is-valid]="errores().numeroIdentificacion === ''">
+                @if (errores().numeroIdentificacion) {
+                  <div class="invalid-feedback d-block">{{ errores().numeroIdentificacion }}</div>
+                }
+              </div>
+
+              <!-- Nombres -->
+              <div class="col-12 col-md-6">
+                <label for="nombres" class="form-label">Nombres:</label>
+                <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres del paciente"
+                  [(ngModel)]="datos.nombres" (blur)="validarCampo('nombres')"
+                  [class.is-invalid]="!!errores().nombres" [class.is-valid]="errores().nombres === ''">
+                @if (errores().nombres) {
+                  <div class="invalid-feedback d-block">{{ errores().nombres }}</div>
+                }
+              </div>
+
+              <!-- Apellidos -->
+              <div class="col-12 col-md-6">
+                <label for="apellidos" class="form-label">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos del paciente"
+                  [(ngModel)]="datos.apellidos" (blur)="validarCampo('apellidos')"
+                  [class.is-invalid]="!!errores().apellidos" [class.is-valid]="errores().apellidos === ''">
+                @if (errores().apellidos) {
+                  <div class="invalid-feedback d-block">{{ errores().apellidos }}</div>
+                }
+              </div>
+
+              <!-- Correo electrónico: dato de confirmación del registro -->
+              <div class="col-12 col-md-6">
+                <label for="correo-electronico" class="form-label">Correo Electrónico:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  <input type="email" id="correo-electronico" name="correo" class="form-control"
+                    placeholder="correo@ejemplo.com" [(ngModel)]="datos.correo" (blur)="validarCampo('correo')"
+                    [class.is-invalid]="!!errores().correo" [class.is-valid]="errores().correo === ''">
+                </div>
+                <div class="form-text">A este correo enviaremos el enlace para confirmar tu registro.</div>
+                @if (errores().correo) {
+                  <div class="invalid-feedback d-block">{{ errores().correo }}</div>
+                }
+              </div>
+
+              <!-- Teléfono -->
+              <div class="col-12 col-md-6">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                  <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Solo números"
+                    [(ngModel)]="datos.telefono" (blur)="validarCampo('telefono')"
+                    [class.is-invalid]="!!errores().telefono" [class.is-valid]="errores().telefono === ''">
+                </div>
+                @if (errores().telefono) {
+                  <div class="invalid-feedback d-block">{{ errores().telefono }}</div>
+                }
+              </div>
+
+              <!-- Género -->
+              <div class="col-12 col-md-6">
+                <fieldset>
+                  <legend class="form-label fs-6">Género:</legend>
+                  @for (genero of generos; track genero.valor) {
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" [id]="genero.valor" name="genero" [value]="genero.valor"
+                        [(ngModel)]="datos.genero" (blur)="validarCampo('genero')" (change)="validarCampo('genero')"
+                        [class.is-invalid]="!!errores().genero">
+                      <label class="form-check-label" [for]="genero.valor">{{ genero.texto }}</label>
+                    </div>
+                  }
+                  @if (errores().genero) {
+                    <div class="invalid-feedback d-block">{{ errores().genero }}</div>
+                  }
+                </fieldset>
+              </div>
+
+              <!-- Fecha de nacimiento -->
+              <div class="col-12 col-md-6">
+                <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha-nacimiento" name="fechaNacimiento" class="form-control"
+                  [(ngModel)]="datos.fechaNacimiento">
+              </div>
+
+              <!-- Términos y condiciones -->
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="terminos" name="terminos"
+                    [(ngModel)]="datos.terminos" (blur)="validarCampo('terminos')" (change)="validarCampo('terminos')"
+                    [class.is-invalid]="!!errores().terminos">
+                  <label class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
+                  @if (errores().terminos) {
+                    <div class="invalid-feedback d-block">{{ errores().terminos }}</div>
+                  }
+                </div>
+              </div>
+
+              @if (mensajeError()) {
+                <div class="col-12">
+                  <div class="alert alert-danger d-flex align-items-center mb-0 py-2" role="alert">
+                    <i class="fas fa-circle-exclamation me-2"></i>{{ mensajeError() }}
+                  </div>
+                </div>
+              }
+
+              <div class="col-12">
+                <button type="submit" id="btnRegistrar" class="btn btn-primary px-4">Registrar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mensaje de registro exitoso (toast de Bootstrap) -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  @if (mostrarToast()) {
+    <div class="toast show align-items-center text-bg-success border-0" role="alert" aria-live="assertive">
+      <div class="d-flex">
+        <div class="toast-body">
+          <i class="fas fa-circle-check me-2"></i>¡Registro exitoso! Revisa tu correo para confirmar tu cuenta.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Cerrar"
+          (click)="mostrarToast.set(false)"></button>
+      </div>
+    </div>
+  }
+</div>

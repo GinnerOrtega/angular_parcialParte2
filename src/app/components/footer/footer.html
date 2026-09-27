@@ -1,0 +1,20 @@
+<footer class="text-center">
+  <div class="container py-4">
+    <p class="fw-semibold mb-3">
+      <i class="fas fa-calendar-check me-2"></i>Agendamiento de Citas Médicas
+    </p>
+
+    <div class="d-flex justify-content-center">
+      @for (red of redesSociales; track red.nombre) {
+        <a [href]="red.url" target="_blank" rel="noopener" [title]="red.nombre"
+          class="btn btn-primary btn-lg mx-2 footer-icon-btn">
+          <i [class]="red.icono"></i>
+        </a>
+      }
+    </div>
+  </div>
+
+  <div class="text-white p-3 derechos">
+    &copy; {{ anioActual }} Todos los derechos reservados.
+  </div>
+</footer>

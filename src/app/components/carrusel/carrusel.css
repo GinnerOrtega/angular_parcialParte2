@@ -1,0 +1,41 @@
+.carousel-wrapper {
+  max-width: 900px;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Degradado oscuro en la parte inferior para que el texto se lea bien */
+.carousel-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
+  pointer-events: none;
+}
+
+.carousel-caption {
+  z-index: 2;
+  text-align: left;
+  left: 8%;
+  right: 8%;
+}
+
+.carousel-caption h5 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.carousel-indicators,
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 3;
+}
+
+@media (max-width: 576px) {
+  .carousel-item img {
+    height: 230px;
+  }
+}

@@ -1,0 +1,17 @@
+<header>
+  <div class="container-fluid">
+    <div class="profile-info">
+      <i class="fas fa-heart-pulse icono-principal" aria-hidden="true"></i>
+      <h1>{{ titulo }}</h1>
+      <p>{{ subtitulo }}</p>
+
+      <div class="social-icons">
+        @for (red of redesSociales; track red.nombre) {
+          <a [href]="red.url" target="_blank" rel="noopener" [title]="red.nombre">
+            <i [class]="red.icono"></i>
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</header>
